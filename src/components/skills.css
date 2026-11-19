@@ -1,0 +1,604 @@
+.skill-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.skill-categories button,
+.skill-inspector__grid button,
+.portfolio-terminal__suggestions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #282538;
+  border-radius: 999px;
+  color: #b6b5c9;
+  background: #101019;
+  font: 500 0.8rem/1.1 var(--mono, monospace);
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.skill-categories button:hover,
+.skill-categories button[aria-pressed='true'] {
+  border-color: #a58cda;
+  color: #e8dcff;
+  background: #241a38;
+}
+
+.skill-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 0.85rem;
+  --skill-color: #bc9aff;
+}
+
+.skill-orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 390px;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid #2d2542;
+  border-radius: 1.45rem;
+  background:
+    radial-gradient(ellipse at 50% 56%, color-mix(in srgb, var(--skill-color) 17%, transparent), transparent 56%),
+    radial-gradient(ellipse at 55% -35%, #272040, transparent 67%),
+    #0c0b15;
+  --orbit-radius: clamp(92px, 15vw, 176px);
+}
+
+.skill-orbit__frame {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 15% 31%, #fafaff 0.6px, transparent 1.4px),
+    radial-gradient(circle at 82% 77%, #c7b6ff 0.8px, transparent 1.5px),
+    radial-gradient(circle at 69% 23%, #c7b6ff 1px, transparent 2px),
+    radial-gradient(circle at 37% 77%, #fafaff 0.6px, transparent 1.4px),
+    radial-gradient(circle at 64% 62%, #98dcff 0.8px, transparent 1.5px),
+    radial-gradient(circle at 32% 28%, #fafaff 0.6px, transparent 1.4px),
+    radial-gradient(circle at 88% 33%, #fafaff 0.6px, transparent 1.4px),
+    radial-gradient(circle at 23% 72%, #98dcff 0.7px, transparent 1.4px),
+    radial-gradient(circle at 60% 80%, #fafaff 0.6px, transparent 1.4px),
+    radial-gradient(circle at 47% 18%, #98dcff 0.7px, transparent 1.4px),
+    linear-gradient(to bottom, transparent 49.8%, #9184ac1f 50%, transparent 50.2%),
+    linear-gradient(to right, transparent 49.8%, #9184ac1f 50%, transparent 50.2%);
+}
+
+.skill-orbit__label {
+  position: absolute;
+  z-index: 2;
+  inset: 1.25rem auto auto 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #b8b0c9;
+  font: 500 0.7rem/1 var(--mono, monospace);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.skill-orbit__label svg {
+  color: var(--skill-color);
+}
+
+.skill-orbit__perspective {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 850px;
+}
+
+.skill-orbit__tilt,
+.skill-orbit__rotor,
+.skill-orbit__arm,
+.skill-orbit__counter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.skill-orbit__tilt {
+  transform: rotateX(var(--orbit-tilt-x, 0deg)) rotateY(var(--orbit-tilt-y, 0deg));
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-orbit__rings,
+.skill-orbit__rings i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.skill-orbit__rings i {
+  display: block;
+  width: calc(var(--orbit-radius) * 2 + 46px);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--skill-color) 35%, transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotateZ(-18deg) rotateX(67deg);
+  box-shadow: 0 0 28px #ac86ff11;
+}
+
+.skill-orbit__rings i:nth-child(2) {
+  width: calc(var(--orbit-radius) * 1.84);
+  border-style: dashed;
+  transform: translate(-50%, -50%) rotateZ(23deg) rotateX(59deg);
+}
+
+.skill-orbit__rings i:nth-child(3) {
+  width: calc(var(--orbit-radius) * 1.55);
+  border-color: color-mix(in srgb, var(--skill-color) 26%, transparent);
+  transform: translate(-50%, -50%) rotateZ(65deg) rotateX(70deg);
+}
+
+.skill-orbit__core {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 113px;
+  max-width: 29vw;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--skill-color) 58%, #33304a);
+  border-radius: 50%;
+  color: #f3eaff;
+  background:
+    radial-gradient(ellipse at 28% 24%, color-mix(in srgb, var(--skill-color) 68%, #19132b), transparent 62%),
+    radial-gradient(ellipse at 75% 78%, color-mix(in srgb, var(--skill-color) 38%, #382058), transparent 61%),
+    #211633;
+  box-shadow: inset -12px -13px 25px #0d0b17cd, inset 0 0 17px color-mix(in srgb, var(--skill-color) 53%, transparent), 0 0 58px color-mix(in srgb, var(--skill-color) 22%, transparent);
+}
+
+.skill-orbit__core i {
+  position: absolute;
+  inset: 0.6rem 1.75rem;
+  transform: rotate(29deg);
+  border: 1px solid #f2e7ff40;
+  border-radius: 50%;
+}
+
+.skill-orbit__core i:nth-child(2) {
+  transform: rotate(-54deg);
+}
+
+.skill-orbit__core svg {
+  z-index: 1;
+  filter: drop-shadow(0 1px 4px #190c2f);
+}
+
+.skill-orbit__rotor {
+  animation: skills-orbit-turn 63s linear infinite paused;
+}
+
+.skill-orbit__arm {
+  transform: rotateY(var(--orbit-angle)) translateZ(var(--orbit-radius)) translateY(var(--orbit-height)) rotateY(calc(-1 * var(--orbit-angle)));
+}
+
+.skill-orbit__counter {
+  animation: skills-orbit-turn 63s linear infinite reverse paused;
+}
+
+.skill-orbit[data-visible='true'] .skill-orbit__rotor,
+.skill-orbit[data-visible='true'] .skill-orbit__counter {
+  animation-play-state: running;
+}
+
+.skill-orbit[data-visible='true']:is(:hover, :focus-within) :is(.skill-orbit__rotor, .skill-orbit__counter),
+[data-motion='paused'] .skill-orbit[data-visible='true'] :is(.skill-orbit__rotor, .skill-orbit__counter) {
+  animation-play-state: paused;
+}
+
+[data-motion='paused'] .skill-orbit__tilt {
+  transform: none;
+}
+
+.skill-orbit__node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  width: max-content;
+  max-width: 154px;
+  padding: 0.42rem 0.7rem 0.42rem 0.43rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid color-mix(in srgb, var(--skill-color) 33%, #312c40);
+  border-radius: 0.78rem;
+  background: #191426f5;
+  box-shadow: 0 6px 17px #0006, inset 0 1px 0 #c6b7ef1f;
+  color: #e9e3f6;
+  font: 500 0.72rem/1.25 var(--mono, monospace);
+  text-align: left;
+  transition: transform 240ms cubic-bezier(0.2, 0.75, 0.25, 1.3), border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.skill-orbit__node > span:first-child {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  aspect-ratio: 1;
+  border-radius: 0.42rem;
+  color: var(--skill-color);
+  background: color-mix(in srgb, var(--skill-color) 16%, #100e19);
+  font-weight: 700;
+}
+
+.skill-orbit__node:hover,
+.skill-orbit__node[aria-pressed='true'] {
+  border-color: var(--skill-color);
+  box-shadow: 0 4px 18px #0005, 0 0 24px color-mix(in srgb, var(--skill-color) 23%, transparent);
+}
+
+.skill-orbit__node:hover {
+  transform: translate(-50%, -50%) scale(1.09);
+}
+
+@keyframes skills-orbit-turn {
+  from { transform: rotateY(0turn); }
+  to { transform: rotateY(1turn); }
+}
+
+.skill-inspector {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(1.15rem, 2.6vw, 2rem);
+  border: 1px solid #292637;
+  border-radius: 1.45rem;
+  background: radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--skill-color) 9%, transparent), transparent 60%), #11111a;
+}
+
+.skill-inspector__title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--skill-color);
+}
+
+.skill-inspector__title h3 {
+  margin: 0;
+  color: var(--ink, #fafaff);
+  font: 600 clamp(1.3rem, 2.6vw, 1.65rem)/1.2 var(--display, sans-serif);
+  letter-spacing: -0.025em;
+}
+
+.skill-inspector__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 1.4rem;
+}
+
+.skill-inspector__grid button {
+  padding-inline: 0.75rem;
+  border-radius: 0.55rem;
+  background: #15141e;
+  text-align: left;
+}
+
+.skill-inspector__grid button:hover,
+.skill-inspector__grid button[aria-pressed='true'] {
+  border-color: var(--skill-color);
+  color: var(--skill-color);
+  background: color-mix(in srgb, var(--skill-color) 12%, #12111b);
+}
+
+.skill-inspector__details {
+  position: relative;
+  min-height: 9.5rem;
+  margin-top: auto;
+  padding: 1rem 1rem 1rem 1.7rem;
+  border: 1px solid #312b43;
+  border-radius: 0.9rem;
+  background: #0d0d15;
+}
+
+.skill-inspector__dot {
+  position: absolute;
+  top: 1.44rem;
+  left: 0.75rem;
+  width: 0.4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--skill-color);
+  box-shadow: 0 0 11px var(--skill-color);
+}
+
+.skill-inspector__details h4 {
+  margin: 0 0 0.4rem;
+  color: var(--ink, #fafaff);
+  font: 600 1.1rem/1.25 var(--display, sans-serif);
+}
+
+.skill-inspector__details p,
+.portfolio-terminal__intro > p:not(.section-kicker) {
+  margin: 0;
+  color: var(--muted, #9ba3b8);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.portfolio-terminal {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr);
+  align-items: center;
+  gap: clamp(1.6rem, 6vw, 5.5rem);
+}
+
+.portfolio-terminal__intro.section-heading {
+  margin-bottom: 0;
+}
+
+.portfolio-terminal__intro .section-title {
+  margin-bottom: 1.15rem;
+  font-size: clamp(2.25rem, 4.2vw, 4.4rem);
+}
+
+.portfolio-terminal__suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+}
+
+.portfolio-terminal__suggestions button {
+  border-color: #363047;
+  border-radius: 0.58rem;
+}
+
+.portfolio-terminal__suggestions button span,
+.portfolio-terminal__line span,
+.portfolio-terminal__prompt {
+  color: var(--lime, #c7ff69);
+}
+
+.portfolio-terminal__suggestions button:hover {
+  border-color: var(--lime, #c7ff69);
+  color: #eeffd5;
+  background: #232d1b;
+}
+
+.portfolio-terminal__window {
+  display: grid;
+  grid-template-rows: auto minmax(220px, min(32vw, 340px)) auto;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #37314b;
+  border-radius: 1.22rem;
+  color: #c6c2d1;
+  background: #0d0c15;
+  box-shadow: 0 24px 70px #03020775, 0 0 45px #7130ee12;
+  font-family: var(--mono, monospace);
+}
+
+.portfolio-terminal__chrome {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid #2d273b;
+  background: linear-gradient(125deg, #1b172a, #161421 60%, #191426);
+}
+
+.portfolio-terminal__chrome > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #b8b2c9;
+  font-size: 0.76rem;
+}
+
+.portfolio-terminal__chrome > span:last-child svg {
+  color: #be9fff;
+}
+
+.portfolio-terminal__dots {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  display: flex;
+  gap: 0.32rem;
+  transform: translateY(-50%);
+}
+
+.portfolio-terminal__dots i {
+  width: 0.55rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ff82c6;
+}
+
+.portfolio-terminal__dots i:nth-child(2) { background: #ffad66; }
+.portfolio-terminal__dots i:nth-child(3) { background: #c7ff69; }
+
+.portfolio-terminal__output {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 1rem clamp(0.85rem, 2.4vw, 1.4rem);
+  background: radial-gradient(ellipse at 100% 0%, #21143872, transparent 75%);
+  scrollbar-color: #514260 #100e19;
+  font-size: clamp(0.73rem, 1.25vw, 0.83rem);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-terminal__output:focus-visible {
+  outline: 2px solid #b781ff;
+  outline-offset: -3px;
+}
+
+.portfolio-terminal__output p {
+  margin: 0;
+}
+
+.portfolio-terminal__welcome {
+  color: #bcb4ca;
+}
+
+.portfolio-terminal__welcome code,
+.portfolio-terminal__output a {
+  color: #c8aaff;
+}
+
+.portfolio-terminal__output a {
+  text-underline-offset: 0.2em;
+  text-decoration: underline;
+}
+
+.portfolio-terminal__entry {
+  margin-top: 0.8rem;
+}
+
+.portfolio-terminal__line {
+  color: var(--ink, #fafaff);
+}
+
+.portfolio-terminal__form {
+  display: flex;
+  align-items: center;
+  min-height: 3.75rem;
+  padding: 0.4rem 0.55rem 0.4rem clamp(0.7rem, 2.4vw, 1.4rem);
+  border-top: 1px solid #2d273b;
+  background: #110f1a;
+  font-size: clamp(0.67rem, 1.3vw, 0.8rem);
+  transition: box-shadow 160ms ease;
+}
+
+.portfolio-terminal__form:focus-within {
+  box-shadow: inset 0 0 0 2px #9c75d8;
+}
+
+.portfolio-terminal__prompt {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.portfolio-terminal__prompt span {
+  color: #bc9aff;
+}
+
+.portfolio-terminal__form input {
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+  padding: 0.5rem 0.55rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink, #fafaff);
+  caret-color: var(--lime, #c7ff69);
+  outline: none;
+  font: inherit;
+}
+
+.portfolio-terminal__form input::placeholder {
+  color: #9b93ac;
+}
+
+.portfolio-terminal__form button {
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #393047;
+  border-radius: 0.55rem;
+  color: #e2cdff;
+  background: #221a30;
+  font: 600 1.15rem/1 var(--mono, monospace);
+}
+
+.portfolio-terminal__form button:hover {
+  border-color: #b69ade;
+  background: #332343;
+}
+
+.portfolio-terminal__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+  .skill-layout,
+  .portfolio-terminal {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .skill-orbit { --orbit-radius: clamp(96px, 26vw, 176px); }
+  .skill-inspector__details { min-height: 6.5rem; }
+  .portfolio-terminal__window { grid-template-rows: auto 235px auto; }
+}
+
+@media (max-width: 540px) {
+  .skill-categories { gap: 0.4rem; }
+  .skill-categories button { padding-inline: 0.65rem; font-size: 0.73rem; }
+
+  .skill-orbit {
+    min-height: 286px;
+    --orbit-radius: clamp(80px, 30vw, 142px);
+  }
+
+  .skill-orbit__node {
+    justify-content: center;
+    width: 44px;
+    padding: 0;
+  }
+
+  .skill-orbit__node-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .portfolio-terminal__form input { font-size: 16px; }
+  .portfolio-terminal__prompt { font-size: 0.63rem; }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .skill-orbit__rotor,
+  .skill-orbit__counter {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-orbit__tilt,
+  .skill-orbit__node {
+    transition: none;
+  }
+
+  .skill-orbit__node:hover { transform: translate(-50%, -50%); }
+}
+
+@media (pointer: coarse) {
+  .portfolio-terminal__form input { font-size: 16px; }
+}
+
+@supports not (transform-style: preserve-3d) {
+  .skill-layout { grid-template-columns: minmax(0, 1fr); }
+  .skill-orbit { display: none; }
+}

@@ -1,0 +1,207 @@
+.hero-webgl,
+.hero-webgl-art,
+.hero-scene-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-webgl-art > div {
+  height: 100%;
+  width: 100%;
+}
+
+.hero-webgl canvas {
+  display: block;
+  touch-action: pan-y;
+}
+
+.hero-scene-key-action {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  color: #efe7ff;
+  background: #24163b;
+  border: 1px solid #aa81e2;
+  border-radius: 0.5rem;
+}
+
+.hero-scene-key-action:focus-visible {
+  width: auto;
+  height: auto;
+  clip-path: none;
+  padding: 0.6rem 0.9rem;
+  outline: 2px solid #cbaaff;
+  outline-offset: 3px;
+}
+
+.hero-scene-fallback {
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(ellipse 46% 44% at 54% 52%, #59339145, transparent 90%);
+}
+
+.hero-fallback-orbit {
+  position: absolute;
+  inset: 62% 8% 9%;
+  z-index: -1;
+  border: 1px solid #a16ce05c;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #4e2c7970, transparent 73%);
+  transform: rotate(-6deg);
+}
+
+.hero-fallback-orbit::before,
+.hero-fallback-orbit::after {
+  position: absolute;
+  inset: 13%;
+  border: 1px solid #a16ce039;
+  border-radius: inherit;
+  content: '';
+}
+
+.hero-fallback-orbit::after {
+  inset: 24%;
+}
+
+.hero-fallback-laptop {
+  position: absolute;
+  top: 23%;
+  left: 25%;
+  width: 53%;
+  transform: perspective(49rem) rotateY(-17deg) rotateZ(-5deg);
+}
+
+.hero-fallback-screen {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1.57;
+  background: linear-gradient(135deg, #19172f, #10101b);
+  border: clamp(5px, 1vw, 11px) solid #a477d4;
+  box-shadow: inset 0 0 0 4px #281b39, 0 0 3rem #a04bff2d;
+  border-radius: 0.75rem;
+}
+
+.hero-fallback-toolbar {
+  display: flex;
+  gap: 0.42rem;
+  padding: 0.4rem 0.8rem;
+  color: #e8a5db;
+  background: #232039;
+  font: 600 clamp(0.39rem, 0.8vw, 0.72rem)/1.4 'JetBrains Mono', monospace;
+}
+
+.hero-fallback-toolbar span { color: #d5c6ef; }
+
+.hero-fallback-code {
+  display: block;
+  padding: 6% 7%;
+  color: #efe5ff;
+  font: 500 clamp(0.4rem, 1.06vw, 0.83rem)/1.27 'JetBrains Mono', monospace;
+}
+
+.hero-fallback-code i { color: #cc9eff; font-style: normal; }
+.hero-fallback-code b { color: #c9f484; font-weight: 500; }
+
+.hero-fallback-keyboard {
+  display: block;
+  width: 100%;
+  height: clamp(1.7rem, 7vw, 5.25rem);
+  margin-top: -0.13rem;
+  border-radius: 0.35rem 0.35rem 0.65rem 0.65rem;
+  transform: perspective(9rem) rotateX(32deg);
+  transform-origin: top;
+  background:
+    repeating-linear-gradient(90deg, #261944 0 0.62rem, transparent 0.64rem 0.77rem) center 26% / 78% 37% no-repeat,
+    repeating-linear-gradient(0deg, #a581d6 0 0.1rem, transparent 0.1rem 0.35rem) center 26% / 78% 38% no-repeat,
+    linear-gradient(155deg, #b69ae8, #8054bc);
+  box-shadow: 0 0.55rem #5d3988, 0 0.85rem 1rem #120c23bf;
+}
+
+.hero-fallback-torus,
+.hero-fallback-sphere,
+.hero-fallback-cube,
+.hero-fallback-braces {
+  position: absolute;
+  z-index: 1;
+}
+
+.hero-fallback-torus {
+  width: 16%;
+  aspect-ratio: 1;
+  top: 18%;
+  right: 7%;
+  border: clamp(0.55rem, 1.42vw, 1.18rem) solid #9b60ed;
+  border-top-color: #cca4ff;
+  border-left-color: #ad79f2;
+  border-bottom-color: #6641a1;
+  border-radius: 50%;
+  box-shadow: inset 0.2rem -0.2rem 1rem #2c105184, 0.37rem 0.24rem 0 #6841a1;
+  transform: rotate(-22deg) rotateX(29deg);
+}
+
+.hero-fallback-sphere {
+  right: 8%;
+  bottom: 20%;
+  width: 15%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 31% 26%, #a8f4ff, #33b9de 35%, #12638f 67%, #57cee8 95%);
+  border-radius: 50%;
+  box-shadow: 0 0 1.7rem #45caff31;
+}
+
+.hero-fallback-sphere::after {
+  position: absolute;
+  inset: 37% -15%;
+  border: 1px solid #a2ecfa;
+  border-radius: 50%;
+  transform: rotate(-21deg);
+  content: '';
+}
+
+.hero-fallback-cube {
+  bottom: 23%;
+  left: 14%;
+  width: 12%;
+  aspect-ratio: 1;
+  background: linear-gradient(145deg, #d9ff93, #a9d84b);
+  border-radius: 15%;
+  box-shadow: inset 0 0 0 0.27rem #bfe66b, inset 0 0 0 0.44rem #80a43e, 0.45rem 0.48rem 0 #749133;
+  transform: rotate(19deg) skew(-10deg);
+}
+
+.hero-fallback-braces {
+  top: 21%;
+  left: 12%;
+  color: #ffb784;
+  text-shadow: 0.13rem 0.17rem #a15b43;
+  transform: rotate(-15deg);
+  font: 700 clamp(1.25rem, 3vw, 3.3rem)/1 'JetBrains Mono', monospace;
+}
+
+.hero-scene-fallback--shaken .hero-fallback-sphere {
+  animation: hero-fallback-jump 0.8s ease;
+}
+
+.hero-scene-fallback--shaken .hero-fallback-torus {
+  animation: hero-fallback-jump 0.72s 0.045s ease;
+}
+
+.hero-scene-fallback--shaken .hero-fallback-braces {
+  animation: hero-fallback-jump 0.74s 0.09s ease;
+}
+
+.hero-scene-fallback--shaken .hero-fallback-cube {
+  animation: hero-fallback-jump 0.87s 0.06s ease;
+}
+
+@keyframes hero-fallback-jump {
+  28% { translate: 0 -25%; scale: 1.055; }
+  57% { translate: 0 4%; }
+  77% { translate: 0 -5%; }
+}
